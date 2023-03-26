@@ -14,6 +14,6 @@ urlpatterns = [
     path('404/', views.notFound, name='404'),
     path('about/', views.about, name='about'),
     path('services/', views.service, name='services'),
-    path('details/<int:pk>', views.details, name='details'),
+    path('details/<str:pk>', views.details, name='details'),
     path('more/', views.more, name='more'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
