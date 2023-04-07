@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-amepbsc7ct7w5^i#cp-b9(=kbgupj3e5^d_f$(eu*7$vfjz8y$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'banky.wsgi.application'
-WSGI_APPLICATION = 'vercel_app.wsgi.app'
+
 
 
 # Database
@@ -122,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
+
 STATICFILES_DIRS = [
       os.path.join(BASE_DIR / 'static')
 ]
