@@ -47,7 +47,7 @@ Author URL: http://w3layouts.com
                       <a class="nav-link" href="{% url "services" %}">Services</a>
                   </li>
                   <li class="nav-item @@contact__active">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item @@contact__active">
@@ -281,7 +281,7 @@ Author URL: http://w3layouts.com
                         ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet
                         elit. Non quae, fugiat nihil ad. Lorem ipsum dolor sit amet. Lorem ipsum init
                         dolor sit, amet elit. Dolor ipsum non velit, culpa! Vivamus a et ut justo, init in dolor et.</p>
-                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about.html"> Learn More</a>
+                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="{% url "about"%}"> Learn More</a>
                 </div>
                 <div class="col-lg-5">
                     <div class="position-relative">
@@ -635,7 +635,7 @@ Author URL: http://w3layouts.com
             <li><a href="#blog"> Blog posts</a></li>
             <li><a href="#pricing"> Pricing plans</a></li>
             <li><a href="{%url "services"%}">Services</a></li>
-            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="{%url "contact"%}">Contact us</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-7 col-7 footer-list-29 footer-3 mt-lg-0 mt-5">

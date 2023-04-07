@@ -13,7 +13,12 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('404/', views.notFound, name='404'),
     path('about/', views.about, name='about'),
+    path('profile/', views.profile, name='profile'),
     path('services/', views.service, name='services'),
     path('details/<str:pk>', views.details, name='details'),
-    path('more/', views.more, name='more'),
+    path('more/', views.more, name='more'), #transaction
+    path('transactions/', views.transactions, name='transactions'),
+    path('contact/', views.contact, name='contact'),
+    path('withdraw/', views.withdraw, name='withdraw'),
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
