@@ -6,7 +6,7 @@
   <!-- Required meta tags --> 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Regal Admin</title>
+  <title>Banky User Dashboard</title>
   <!-- base:css -->
   <link rel="stylesheet" href="{% static "vendors/mdi/css/materialdesignicons.min.css"%}">
   <link rel="stylesheet" href="{% static "vendors/feather/feather.css"%}">
@@ -112,7 +112,8 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
           <div class="user-image">
-            <img src="{% static 'images/faces/face28.png' %}">
+            {% for p in profile  %}<img src="{{p.image.url}}" alt="404">{% endfor %}
+           
           </div>
           <div class="user-name">
               {{user.first_name}}
@@ -137,8 +138,8 @@
             </a>
             <div class="collapse show" id="ui-basic" style="">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Deposit</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Withdraw</a></li>
+                <li class="nav-item"> <a class="nav-link" href={% url 'home' %}>Deposit</a></li>
+                <li class="nav-item"> <a class="nav-link" href={% url 'withdraw' %}>Withdraw</a></li>
               </ul>
             </div>
           </li>
@@ -151,7 +152,7 @@
             </a>
             <div class="collapse" id="ui-basic" style="">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Transactions</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url "transactions" %}">Transactions</a></li>
               </ul>
             </div>
           </li>
@@ -172,9 +173,9 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                     <div class="card">
                       <div class="card-body">
-                          <h4 class="card-title">Customers</h4>
+                          <h4 class="card-title">Current Balance</h4>
                           <p>23% increase in conversion</p>
-                          <h4 class="text-dark font-weight-bold mb-2">43,981</h4>
+                          <h3 class="text-dark font-weight-bold mb-2">$ 43,981</h3>
                           <canvas id="customers"></canvas>
                       </div>
                     </div>
@@ -182,9 +183,9 @@
                 <div class="col-sm-12 stretch-card">
                     <div class="card">
                       <div class="card-body">
-                          <h4 class="card-title">Orders</h4>
+                          <h4 class="card-title">Checking Balance</h4>
                           <p>6% decrease in earnings</p>
-                          <h4 class="text-dark font-weight-bold mb-2">55,543</h4>
+                          <h4 class="text-dark font-weight-bold mb-2">$ 55,543</h4>
                           <canvas id="orders"></canvas>
                       </div>
                     </div>
@@ -194,7 +195,7 @@
             <div class="col-xl-9 d-flex grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                      <h4 class="card-title">Website Audience Metrics</h4>
+                      <h4 class="card-title">Business Audience Metrics</h4>
                       <div class="row">
                         <div class="col-lg-5">
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit amet cumque cupiditate</p>
@@ -218,7 +219,7 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex justify-content-between mb-3">
-                          <h4 class="card-title">Market Trends</h4>
+                          <h4 class="card-title">Market Expenditures</h4>
                           <div class="dropdown">
                               <button class="btn btn-sm dropdown-toggle text-dark pt-0 pr-0" type="button" id="dropdownMenuSizeButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   This week
@@ -309,40 +310,20 @@
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="text-dark">
-                          <div class="d-flex pb-3 border-bottom justify-content-between">
-                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                            <div class="font-weight-bold mr-sm-4">
-                              <div>Deposit has updated to Paid</div>
-                              <div class="text-muted font-weight-normal mt-1">32 Minutes Ago</div>
-                            </div>
-                            <div><h6 class="font-weight-bold text-info ml-sm-2">$325</h6></div>
-                          </div>
+                          
+                          {% for r in rActivity%}
                           <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
                             <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
                             <div class="font-weight-bold mr-sm-4">
-                              <div>Your Withdrawal Proceeded</div>
-                              <div class="text-muted font-weight-normal mt-1">45 Minutes Ago</div>
+                              <div>{{r.title}}</div>
+                              <div class="text-muted font-weight-normal mt-1">{{r.date_created}}</div>
                             </div>
-                            <div><h6 class="font-weight-bold text-info ml-sm-2">$4987</h6></div>
+                            <div><h6 class="font-weight-bold text-info ml-sm-2">${{r.amount}}</h6></div>
                           </div>
-                          <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
-                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                            <div class="font-weight-bold mr-sm-4">
-                              <div>Deposit has updated to Paid                              </div>
-                              <div class="text-muted font-weight-normal mt-1">1 Days Ago</div>
-                            </div>
-                            <div><h6 class="font-weight-bold text-info ml-sm-2">$5391</h6></div>
-                          </div>
-                          <div class="d-flex pt-3 justify-content-between">
-                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                            <div class="font-weight-bold mr-sm-4">
-                              <div>Deposit has updated to Paid</div>
-                              <div class="text-muted font-weight-normal mt-1">3 weeks Ago</div>
-                            </div>
-                            <div><h6 class="font-weight-bold text-info ml-sm-2">$264</h6></div>
-                          </div> 
+                          {% endfor %}
                         </div>
                       </div>
+                      <a href="{%url "transactions"%}"><input type="submit" value="Read More"></a>
                     </div>  
                   </div>
                 </div>
@@ -493,6 +474,7 @@
                       </table>
                     </div>
                 </div>
+               
               </div>
             </div>
             <div class="col-xl-3 grid-margin-lg-0 grid-margin stretch-card">
@@ -667,8 +649,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Banky.com 2023</span>
+            
           </div>
         </footer>
         <!-- partial -->

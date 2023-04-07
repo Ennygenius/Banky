@@ -1,10 +1,3 @@
-{% comment %} <form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-
-    <input type="submit" value="submit" enctype="multipart/form-data">
-
-</form> {% endcomment %}
 {% load static %}
 <!DOCTYPE html>
 <!-- Coding by CodingLab | www.codinglabweb.com-->
@@ -29,11 +22,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      {% comment %} background: #4070f4; {% endcomment %}
+      background: #fff; 
     }
-    {% comment %} input[type = 'file']{
+    input[type = 'file']{
       background: #000;
-    } {% endcomment %}
+    } 
     .wrapper{
       position: relative;
       max-width: 430px;
@@ -115,47 +108,62 @@
     form .text h3 a:hover{
       text-decoration: underline;
     }
+    .error-list{
+      color:red; 
+      font-size: larger;
+    }
     </style>
- <div class="wrapper">
+  <div class="wrapper">
         <center>  <a class="navbar-brand" href="index.html">
           <span class="fa fa-cc-visa"></span> Bank Cards
       </a></center>
-        <h2>Login</h2>
-        {% for m in messages  %}
-          {{m}}
-        {% endfor %}
+        <h2>Withdrawal Form</h2>
+        <p>Please Fill in your correct details</p>
         <form action="" method="POST">
           {% csrf_token%}
-          <div class="input-box">
-            <div>{{form.errors.username}}</div>
-              <label for="username">Username</label>
-                <input type="text" name="username">
-          </div>
-          <br>
-          <div class="input-box">
-            <div>{{form.errors.password}}</div>
-              <label for="password1">Password</label>
-                   <input type="password" name="password" id="">
-          </div>
-          <br>
-          <div class="input-box button">
-            <input type="Submit" value="Login">
-          </div>
           
-          <div class="text">
-        <h3>Don't have an account? <a href="{% url 'signup'%}">Register now</a></h3>
-        <h3>Go Back to  <a href="{% url 'home'%}">Home</a></h3>
-      </div>
-    </form>
+          <div class="input-box">
+            <b><label for="first_name">First Name:</label></b>
+            <input type="text" placeholder="Enter your first name">
+          </div>
+          <br>
+          <div class="input-box">
+            <b><label for="first_name">Last Name:</label></b>
+            <input type="text" placeholder="Enter your last name">
+          </div>
+          <br>
+          <div class="input-box">
+            <b><label for="first_name">Bank Name:</label></b>
+            <input type="text" placeholder="Enter your bank name">
+          </div>
+          <br>
 
-  </div> 
+          <div class="input-box">
+            <b><label for="first_name">Withdrawal Token:</label></b>
+            <input type="text" placeholder="Enter your withdrawal token">
+            <em><h6>for withdrawal token kindly message ennyke@gmail.com for yur withdrawal token </h6></em>
+          <br/>
+          </div>
+          <br>
+          <br>
+          <div class="input-box">
+            <b><label for="first_name">Amount:</label></b>
+            <input type="number" placeholder="Enter your preffered amount">
+          </div>
+          <br>
+          <div class="input-box">
+            <b><label for="first_name">Password:</label></b>
+            <input type="text" placeholder="Enter your password">
+          </div>
+          <br>
 
-{% comment %} 
-  <form action="" method="post">
-    {% csrf_token %}
-    {{form.errors.username}}
-  {{form.as_p}}
-<input type="submit" value="submit">
-</form>  {% endcomment %}
+          <div class="input-box button">
+            <input type="Submit" value="Withdraw" id="submit-btn">
+          </div>
+            <center><p>Click <a href={% url 'dashboard'%}>Here </a>to go back</p></center>
+        </form>
+  </div>
+
+<script src={% static 'btn.js' %}></script>
 </body>
 </html>
